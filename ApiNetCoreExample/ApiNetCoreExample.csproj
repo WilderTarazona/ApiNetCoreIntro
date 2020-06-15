@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApiNetCoreExample.Application\ApiNetCoreExample.Application.csproj" />
+    <ProjectReference Include="..\ApiNetCoreExample.Infrastructure\ApiNetCoreExample.Infrastructure.csproj" />
+  </ItemGroup>
+
+
+</Project>
