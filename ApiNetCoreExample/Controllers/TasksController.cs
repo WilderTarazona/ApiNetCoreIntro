@@ -19,7 +19,7 @@ namespace ApiNetCoreExample.Controllers
             return await Mediator.Send(new GetAllTasksQuery());
         }
 
-        [HttpGet("/{id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<TaskDto>> Get(int id)
         {
             return await Mediator.Send(new GetTaskByIdQuery { Id = id });
@@ -28,6 +28,7 @@ namespace ApiNetCoreExample.Controllers
         [HttpPost]
         public async Task<ActionResult<int>> Create(CreateTaskCommand command)
         {
+            Response.StatusCode = 201;
             return await Mediator.Send(command);
         }
 

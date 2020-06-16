@@ -6,3 +6,4 @@ C:\Proyectos\Plus One\Practicando NET Core\SolApiNetCoreExample\ApiNetCoreExampl
 C:\Proyectos\Plus One\Practicando NET Core\SolApiNetCoreExample\ApiNetCoreExample.Core\obj\Debug\netstandard2.0\ApiNetCoreExample.Core.csproj.CoreCompileInputs.cache
 C:\Proyectos\Plus One\Practicando NET Core\SolApiNetCoreExample\ApiNetCoreExample.Core\obj\Debug\netstandard2.0\ApiNetCoreExample.Core.dll
 C:\Proyectos\Plus One\Practicando NET Core\SolApiNetCoreExample\ApiNetCoreExample.Core\obj\Debug\netstandard2.0\ApiNetCoreExample.Core.pdb
+C:\Proyectos\Plus One\Practicando NET Core\SolApiNetCoreExample\ApiNetCoreExample.Core\obj\Debug\netstandard2.0\ApiNetCoreExample.Core.csprojAssemblyReference.cache

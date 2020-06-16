@@ -17,6 +17,26 @@ namespace ApiNetCoreExample.Infrastructure.Repositories
         {
             _configuration = configuration;
         }
+        public async Task<IEnumerable<Core.Entities.Task>> GetAll()
+        {
+            var sql = "SELECT * FROM Tasks;";
+            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                connection.Open();
+                var result = await connection.QueryAsync<Core.Entities.Task>(sql);
+                return result;
+            }
+        }
+        public async Task<Core.Entities.Task> Get(int id)
+        {
+            var sql = "SELECT * FROM Tasks WHERE Id = @Id;";
+            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                connection.Open();
+                var result = await connection.QueryAsync<Core.Entities.Task>(sql, new { Id = id });
+                return result.FirstOrDefault();
+            }
+        }
         public async Task<int> Add(Core.Entities.Task entity)
         {
             entity.DateCreated = DateTime.Now;
@@ -28,40 +48,6 @@ namespace ApiNetCoreExample.Infrastructure.Repositories
                 return affectedRows;
             }
         }
-
-        public async Task<int> Delete(int id)
-        {
-            var sql = "DELETE FROM Tasks WHERE Id = @Id;";
-            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
-            {
-                connection.Open();
-                var affectedRows = await connection.ExecuteAsync(sql, new { Id = id });
-                return affectedRows;
-            }
-        }
-
-        public async Task<Core.Entities.Task> Get(int id)
-        {
-            var sql = "SELECT * FROM Tasks WHERE Id = @Id;";
-            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
-            {
-                connection.Open();
-                var result = await connection.QueryAsync<Core.Entities.Task>(sql, new { Id = id });
-                return result.FirstOrDefault();
-            }
-        }
-
-        public async Task<IEnumerable<Core.Entities.Task>> GetAll()
-        {
-            var sql = "SELECT * FROM Tasks;";
-            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
-            {
-                connection.Open();
-                var result = await connection.QueryAsync<Core.Entities.Task>(sql);
-                return result;
-            }
-        }
-
         public async Task<int> Update(Core.Entities.Task entity)
         {
             entity.DateModified = DateTime.Now;
@@ -70,6 +56,16 @@ namespace ApiNetCoreExample.Infrastructure.Repositories
             {
                 connection.Open();
                 var affectedRows = await connection.ExecuteAsync(sql, entity);
+                return affectedRows;
+            }
+        }
+        public async Task<int> Delete(int id)
+        {
+            var sql = "DELETE FROM Tasks WHERE Id = @Id;";
+            using (var connection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                connection.Open();
+                var affectedRows = await connection.ExecuteAsync(sql, new { Id = id });
                 return affectedRows;
             }
         }
